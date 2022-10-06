@@ -18,6 +18,7 @@ const Layout: FC<Props> = ({ title, children }) => {
     <Box sx={{ flexGrow: 1 }}>
       <Head>
         <title>{title || 'Task Manager'}</title>
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
 
       <Navbar clicked={onMenuClicked} />

@@ -8,10 +8,10 @@ export const lightTheme = createTheme({
       default: grey[300],
     },
     primary: {
-      main: '#4a148c',
+      main: '#a4ac86',
     },
     secondary: {
-      main: '#19857b',
+      main: '#936639',
     },
     error: {
       main: red.A400,
@@ -24,7 +24,7 @@ export const lightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          backgroundColor: '#4a188c',
+          backgroundColor: '#a4ac86',
         },
       },
     },

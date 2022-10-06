@@ -11,8 +11,6 @@ export default function Document() {
         />
 
         <link rel='shortcut icon' href='/favicon.ico' />
-
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
       <body>
         <Main />

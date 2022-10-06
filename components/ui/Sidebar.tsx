@@ -2,6 +2,7 @@ import {
   Box,
   Divider,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -10,7 +11,8 @@ import {
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import { FC, useContext } from 'react';
-import { UIContext } from '../../context/ui';
+import CloseIcon from '@mui/icons-material/Close';
+import { Container } from '@mui/system';
 
 const menuItems = ['Inbox', 'Starred', 'Send Email', 'Drafts'];
 
@@ -28,8 +30,19 @@ const Sidebar: FC<Props> = ({ open, onClose }) => {
     // <Drawer anchor='left' open={sidemenutOpen} onClose={closeSidemenu}>
     <Drawer anchor='left' open={open} onClose={onClose}>
       <Box sx={{ width: 250 }}>
-        <Box sx={{ padding: '5px 10px' }}>
+        <Box
+          sx={{
+            padding: '5px 10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <Typography variant='h4'>Menú</Typography>
+
+          <IconButton sx={{ width: 'fit-content' }} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
         </Box>
 
         <List>
