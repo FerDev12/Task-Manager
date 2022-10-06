@@ -5,12 +5,13 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#c2c5aa',
+      main: '#ced1bb',
     },
     secondary: {
       // main: '#a98561',
       main: '#b39474',
     },
+    success: { main: '#a4ac86' },
     error: {
       // main: red.A400,
       main: '#bf4342',
@@ -24,7 +25,6 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#a4ac86',
-          // backgroundColor: '#656d4a',
         },
       },
     },

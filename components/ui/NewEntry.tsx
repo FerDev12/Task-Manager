@@ -1,7 +1,18 @@
-import { Box, Button, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Modal,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import { ChangeEvent, ChangeEventHandler, useContext, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { EntriesContext } from '../../context/entries';
 
 const NewEntry = () => {
@@ -27,7 +38,7 @@ const NewEntry = () => {
   const onCancelNewEntry = () => cleanUp();
 
   const onSave = () => {
-    if (inputIsEmpty) return;
+    if (inputIsEmpty) return setIsTouched(true);
 
     addNewEntry(inputValue);
 
@@ -35,37 +46,44 @@ const NewEntry = () => {
   };
 
   return (
-    <Box sx={{ marginBottom: 2, paddingX: 1 }}>
-      {!isAdding && (
-        <Button
-          startIcon={<AddIcon />}
-          fullWidth
-          variant='outlined'
-          onClick={onAddNewEntry}
-        >
-          Agregar Tarea
-        </Button>
-      )}
+    <>
+      <Button
+        disabled={isAdding}
+        startIcon={<AddIcon />}
+        variant='outlined'
+        onClick={onAddNewEntry}
+        sx={{
+          width: 'fit-content',
+          marginBottom: 2,
+        }}
+      >
+        Agregar Pendiente
+      </Button>
 
-      {isAdding && (
-        <>
-          <TextField
-            fullWidth
-            sx={{ marginTop: 2, marginBottom: 1 }}
-            placeholder='Nueva entrada'
-            multiline
-            label='Nueva entrada'
-            helperText={inputIsEmpty && isTouched && 'Ingrese un valor'}
-            error={inputIsEmpty && isTouched}
-            value={inputValue}
-            onChange={onTextFieldChange}
-            onBlur={() => setIsTouched(true)}
-          />
+      <Dialog open={isAdding} fullWidth>
+        <Box>
+          <DialogTitle>{'Nuevo Pendiente'}</DialogTitle>
 
-          <Box display='flex' justifyContent='space-between' marginTop={1}>
+          <DialogContent>
+            <TextField
+              sx={{ mt: 1 }}
+              fullWidth
+              placeholder='Nueva entrada'
+              multiline
+              label='Nueva entrada'
+              helperText={inputIsEmpty && isTouched && 'Ingrese un valor'}
+              error={inputIsEmpty && isTouched}
+              value={inputValue}
+              onChange={onTextFieldChange}
+              onBlur={() => setIsTouched(true)}
+            />
+          </DialogContent>
+
+          <DialogActions>
             <Button variant='text' onClick={onCancelNewEntry} color='secondary'>
               Cancelar
             </Button>
+
             <Button
               variant='outlined'
               color='primary'
@@ -74,10 +92,10 @@ const NewEntry = () => {
             >
               Guardar
             </Button>
-          </Box>
-        </>
-      )}
-    </Box>
+          </DialogActions>
+        </Box>
+      </Dialog>
+    </>
   );
 };
 

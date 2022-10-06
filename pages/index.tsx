@@ -1,36 +1,29 @@
-import { Card, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionActions,
+  AccordionDetails,
+  AccordionSummary,
+  Card,
+  CardHeader,
+  Grid,
+  Typography,
+} from '@mui/material';
+import { Box } from '@mui/system';
 import type { NextPage } from 'next';
 import { Layout } from '../components/layout';
 import { EntryList, NewEntry } from '../components/ui';
 import { Status } from '../interfaces';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Home: NextPage = () => {
   return (
     <Layout title='Task Manager | Home'>
+      <NewEntry />
+
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='Pendientes' />
-            {/* Agregar una nueva entrada */}
-            <NewEntry />
-            {/* Listado de las entradas */}
-            <EntryList status={Status.pending} />
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='En Progreso' />
-            <EntryList status={Status.inProgress} />
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='Completadas' />
-            <EntryList status={Status.finished} />
-          </Card>
-        </Grid>
+        <EntryList title='Pendientes' status={Status.pending} />
+        <EntryList title='En Progreso' status={Status.inProgress} />
+        <EntryList title='Completadas' status={Status.finished} />
       </Grid>
     </Layout>
   );

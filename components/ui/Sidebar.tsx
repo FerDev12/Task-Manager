@@ -28,7 +28,7 @@ const Sidebar: FC<Props> = ({ open, onClose }) => {
   return (
     // Using context
     // <Drawer anchor='left' open={sidemenutOpen} onClose={closeSidemenu}>
-    <Drawer anchor='left' open={open} onClose={onClose}>
+    <Drawer anchor='right' open={open} onClose={onClose}>
       <Box sx={{ width: 250 }}>
         <Box
           sx={{

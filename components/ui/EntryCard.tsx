@@ -3,12 +3,12 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
+  Chip,
   Typography,
 } from '@mui/material';
 import { DragEvent, FC, useContext } from 'react';
 import { UIContext } from '../../context/ui';
-import { Entry } from '../../interfaces';
-
+import { Entry, Status } from '../../interfaces';
 interface Props {
   entry: Entry;
 }
@@ -28,6 +28,13 @@ const EntryCard: FC<Props> = ({ entry }) => {
     endDragging();
   };
 
+  const chipColor =
+    entry.status === Status.pending
+      ? 'secondary'
+      : entry.status === Status.inProgress
+      ? 'primary'
+      : 'success';
+
   return (
     <Card
       sx={{ marginBottom: 1 }}
@@ -43,8 +50,13 @@ const EntryCard: FC<Props> = ({ entry }) => {
         </CardContent>
 
         <CardActions
-          sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            paddingRight: 2,
+          }}
         >
+          <Chip variant='outlined' color={chipColor} label={entry.status} />
           <Typography variant='body2'>hace 30 minutos</Typography>
         </CardActions>
       </CardActionArea>
