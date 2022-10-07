@@ -10,25 +10,29 @@ interface Props {
 const Navbar: FC<Props> = ({ clicked }) => {
   return (
     <Box flexGrow={1}>
-      <AppBar position='sticky' elevation={5} sx={{ marginBottom: 1 }}>
+      <AppBar
+        position='sticky'
+        elevation={5}
+        sx={{ marginBottom: 2, borderBottom: '1px solid #ced1bb' }}
+      >
         <Toolbar>
           <Box flexGrow={1} display='flex' alignItems='center'>
-            <Typography color='black' variant='h4'>
+            <Typography color='primary' variant='h4'>
               T
             </Typography>
-            <Typography color='black' variant='h6'>
+            <Typography color='success' variant='h6'>
               ask
             </Typography>
-            <Typography color='black' variant='h4'>
+            <Typography color='primary' variant='h4'>
               M
             </Typography>
-            <Typography color='black' variant='h6'>
+            <Typography color='success' variant='h6'>
               anager
             </Typography>
           </Box>
 
           <IconButton edge='end' onClick={clicked} size='large'>
-            <MenuOutlinedIcon sx={{ fill: 'black' }} />
+            <MenuOutlinedIcon sx={{ fill: '#ced1bb' }} />
           </IconButton>
         </Toolbar>
       </AppBar>

@@ -1,0 +1,9 @@
+services:
+  entreisdb:
+    image: mongo:5.0.0
+    container_name: entries-database
+    ports:
+      - 27017:27017
+    # Creates an in-memory file for saving entries
+    volumes:
+      - ./mongo:/data/db
