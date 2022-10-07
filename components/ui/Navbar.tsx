@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 interface Props {
   clicked: () => void;

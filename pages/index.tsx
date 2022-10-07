@@ -1,19 +1,8 @@
-import {
-  Accordion,
-  AccordionActions,
-  AccordionDetails,
-  AccordionSummary,
-  Card,
-  CardHeader,
-  Grid,
-  Typography,
-} from '@mui/material';
-import { Box } from '@mui/system';
+import { Grid } from '@mui/material';
 import type { NextPage } from 'next';
 import { Layout } from '../components/layout';
 import { EntryList, NewEntry } from '../components/ui';
 import { Status } from '../interfaces';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Home: NextPage = () => {
   return (
