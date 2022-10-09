@@ -6,26 +6,31 @@ import {
   Chip,
   Typography,
 } from '@mui/material';
+import { useRouter } from 'next/router';
 import { DragEvent, FC, useContext } from 'react';
 import { UIContext } from '../../context/ui';
 import { Entry, Status } from '../../interfaces';
+import { dateFunctions } from '../../utils';
 interface Props {
   entry: Entry;
 }
 
 const EntryCard: FC<Props> = ({ entry }) => {
   const { startDragging, endDragging } = useContext(UIContext);
+  const router = useRouter();
 
   const onDragStart = (e: DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData('text', entry._id);
 
-    // TODO modify state to indicate a drag event going on
     startDragging();
   };
 
   const onDragEnd = () => {
-    // TODO: cancel on drag
     endDragging();
+  };
+
+  const onClick = () => {
+    router.push(`/entries/${entry._id}`);
   };
 
   const chipColor =
@@ -41,6 +46,7 @@ const EntryCard: FC<Props> = ({ entry }) => {
       draggable
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
+      onClick={onClick}
     >
       <CardActionArea>
         <CardContent>
@@ -57,7 +63,9 @@ const EntryCard: FC<Props> = ({ entry }) => {
           }}
         >
           <Chip variant='outlined' color={chipColor} label={entry.status} />
-          <Typography variant='body2'>hace 30 minutos</Typography>
+          <Typography variant='body2'>
+            {dateFunctions.getFormattedTimeToNow(entry.createdAt)}
+          </Typography>
         </CardActions>
       </CardActionArea>
     </Card>

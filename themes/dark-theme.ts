@@ -5,17 +5,16 @@ export const darkTheme = createTheme({
     mode: 'dark',
     primary: {
       main: '#ced1bb',
+      dark: '#b4ac86',
     },
     secondary: {
       // main: '#a98561',
       main: '#b39474',
     },
-    success: {
-      main: '#a4ac86',
-    },
     error: {
       // main: red.A400,
-      main: '#bf4342',
+      // main: '#bf4342',
+      main: '#e63946',
     },
   },
   components: {

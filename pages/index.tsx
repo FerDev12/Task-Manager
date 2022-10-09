@@ -1,8 +1,8 @@
-import { Grid } from '@mui/material';
 import type { NextPage } from 'next';
+import { Grid } from '@mui/material';
+import { Status } from '../interfaces';
 import { Layout } from '../components/layout';
 import { EntryList, NewEntry } from '../components/ui';
-import { Status } from '../interfaces';
 
 const Home: NextPage = () => {
   return (
