@@ -14,16 +14,19 @@ const entrySchema = new Schema<IEntry>({
   },
   createdAt: {
     type: Number,
+    default: Date.now(),
   },
   status: {
     type: String,
     enum: {
       values: ['pending', 'in-progress', 'finished'],
-      message: '"{VALUE}" is not an allowed value',
+      message: '{VALUE} is not an allowed value',
     },
+    default: Status.pending,
   },
 });
 
-const Entry: Model<IEntry> = models.Entry || model('Entry', entrySchema);
+const Entry: Model<IEntry> =
+  models.Entry || model<IEntry>('Entry', entrySchema);
 
 export default Entry;
